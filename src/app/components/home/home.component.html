@@ -5,30 +5,51 @@
   <button (click)="loadProducts()">Search</button>
 </div>
 
-  <table *ngIf="products.length > 0" class="business-table">
-    <thead>
-      <tr>
-        <th>Название компании</th>
-        <th>Уровень запасов</th>
-        <th>Цена за 1 единицу</th>
-        <th>Цена за 10 единиц</th>
-        <th>Цена за 100 единиц</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.companyName }}</td>
-        <td *ngIf="product.offers && product.offers.length > 0">{{ product.offers[0]?.inventoryLevel }}</td>
+<table class="business-table">
+  <thead>
+    <tr>
+      <th>Название компании</th>
+      <th>Уровень запасов</th>
+      <th>Цена за 1 единицу</th>
+      <th>Цена за 10 единиц</th>
+      <th>Цена за 100 единиц</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.companyName }}</td>
+      <td *ngIf="product.offers && product.offers.length > 0">{{ product.offers[0]?.inventoryLevel }}</td>
+      <td>
         <ng-container *ngFor="let offer of product.offers">
           <ng-container *ngFor="let price of offer.prices">
-            <td *ngIf="price.quantity === 1 && price.currency === 'USD'">{{ price.priceValue | currency:"USD":"symbol":"1.3-3" }}</td>
-            <td *ngIf="price.quantity === 10 && price.currency === 'USD'">{{ price.priceValue | currency:"USD":"symbol":"1.3-3"}}</td>
-            <td *ngIf="price.quantity === 100 && price.currency === 'USD'">{{ price.priceValue| currency:"USD":"symbol":"1.3-3"}}</td>
+            <ng-container *ngIf="price.quantity === 1">
+              <p>{{ price.priceValue | currency:"symbol":"1.3-3" }}</p>
+            </ng-container>
           </ng-container>
         </ng-container>
-      </tr>
-    </tbody>
-  </table>
+      </td>
+      <td>
+        <ng-container *ngFor="let offer of product.offers">
+          <ng-container *ngFor="let price of offer.prices">
+            <ng-container *ngIf="price.quantity === 10">
+              <td>{{ price.priceValue | currency:"RUB":"symbol":"1.3-3" }}</td>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </td>
+      <td>
+        <ng-container *ngFor="let offer of product.offers">
+          <ng-container *ngFor="let price of offer.prices">
+            <ng-container *ngIf="price.quantity === 100">
+              <td>{{ price.priceValue | currency:"RUB":"symbol":"1.3-3" }}</td>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 </div>
 
