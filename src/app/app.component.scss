@@ -7,9 +7,8 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border: red;
   font-family: 'Montserrat', sans-serif;
-  color: rgb(65, 65, 65);
+  color: rgb(41, 41, 41);
   max-width: 1400px;
   margin: 0 auto;
 
@@ -22,7 +21,6 @@
     max-width: 1400px;
     height: 100px;
     z-index: 999;
-    background-color: #c71616;
   }
 
   main {

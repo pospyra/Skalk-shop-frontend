@@ -1,0 +1,68 @@
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.price-quantity {
+  display: flex;
+  justify-content: space-around;
+  padding: 2px;
+}
+
+.info-price-container{
+  border: 1px solid #ccc;
+}
+
+.price{
+  text-align: right;
+
+}
+
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.pricing {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}

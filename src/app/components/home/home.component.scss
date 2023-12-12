@@ -9,23 +9,37 @@
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
+
+  button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #60829d;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  input[type="text"] {
+    padding: 8px;
+    width: 200px;
+  }
+
 }
 
-input[type="text"] {
-  padding: 8px;
-  width: 200px;
+.add-to-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%; /* Adjust as needed for spacing */
 }
 
-button {
-  padding: 8px 12px;
-  background-color: #3498db;
-  color: white;
+.add-to-cart button{
+  background-color: #fff;
   border: none;
-  cursor: pointer;
-}
 
-button:hover {
-  background-color: #2980b9;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 /* Стили для таблицы */
@@ -37,7 +51,7 @@ button:hover {
 .business-table th, .business-table td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 .business-table th {
@@ -49,7 +63,3 @@ button:hover {
   margin: 0;
 }
 
-/* Добавим отступы для лучшего читаемости */
-.business-table td:nth-child(n+3) {
-  padding-right: 20px;
-}
