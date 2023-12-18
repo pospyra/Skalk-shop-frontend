@@ -4,4 +4,6 @@ export interface AddToCartModel {
   prices: PriceDTO[];
   mnp: string;
   offerId: number;
+  clickUrl: string;
+  moq: number;
 }

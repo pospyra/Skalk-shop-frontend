@@ -11,6 +11,7 @@ export interface OfferDTO {
     clickUrl?: string | null;
     inventoryLevel: number;
     prices?: PriceDTO[] | null;
+    moq?: number | null;
 }
 
 export interface PriceDTO {

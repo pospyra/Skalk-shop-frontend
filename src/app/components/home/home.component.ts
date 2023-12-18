@@ -16,14 +16,16 @@ export class HomeComponent {
   constructor(private productService: ProductService, private dialog: MatDialog) { }
 
 
-  openAddToCartModal(mnp: string, offerId: number, pricesDto?: PriceDTO[] ) {
+  openAddToCartModal(mnp?: string, offerId?: number, pricesDto?: PriceDTO[], clickUrl?: string, moq?: number ) {
     const dialogRef = this.dialog.open(AddToCartModalComponent, {
       width: '600px',
       height: '600px',
       data: {
         prices: pricesDto,
         mnp: mnp,
-        offerId: offerId
+        offerId: offerId,
+        clickUrl: clickUrl,
+        moq: moq
       }
     });
 

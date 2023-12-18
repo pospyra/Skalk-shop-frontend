@@ -6,6 +6,7 @@ import { LoginUserDTO } from '../models/user/login-user';
 import { Subject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/enviroment/enviroments.prod';
+import { UserDTO } from '../models/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,10 @@ export class AuthService {
 
   areTokensExist() {
     return localStorage.getItem('token') && localStorage.getItem('token');
+  }
+
+  getCurrentUser() {
+    return this._http.get<UserDTO>(`${this.baseUrl}/current`);
   }
 
   registration(userRegister: NewUserDTO){

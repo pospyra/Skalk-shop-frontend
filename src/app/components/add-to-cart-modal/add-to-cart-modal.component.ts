@@ -11,19 +11,23 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class AddToCartModalComponent implements OnInit {
 
+  minCount =9;
   newItem: NewItemCartDTO = {
     mpn: '',
     offerId: 0,
     quantity: 0,
     price: 0,
-    totalAmount: 0
+    totalAmount: 0,
+    clickUrl: ''
   }
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: AddToCartModel,
     private shoppingCartService: ShoppingCartService,
     private dialogRef: MatDialogRef<AddToCartModalComponent>) {
     this.newItem.offerId = data.offerId;
-    this.newItem.mpn = data.mnp
+    this.newItem.mpn = data.mnp;
+    this.newItem.clickUrl = data.clickUrl;
+    this.minCount = data.moq;
   }
 
   ngOnInit(): void {

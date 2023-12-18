@@ -13,6 +13,9 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { ManagerPanelComponent } from './components/manager-panel/manager-panel.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     UserRegistrationComponent,
     UserLoginComponent,
     AddToCartModalComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    MyOrdersComponent,
+    ManagerPanelComponent,
+    HeaderComponent
   ],
   imports: [
     ReactiveFormsModule ,

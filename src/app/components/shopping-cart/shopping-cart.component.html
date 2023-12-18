@@ -7,24 +7,51 @@
     <table>
       <thead>
         <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total Amount</th>
+          <th>Название</th>
+          <th>Количество</th>
+          <th>Цена/шт</th>
+          <th>Стоимость</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of cart.itemShoppingCarts">
           <td>{{ item.product?.manufacturerName }} - {{ item.product?.mpn }}</td>
           <td>{{ item.quantity }}</td>
-          <td>{{ item.price }} ₽</td>
-          <td>{{ item.totalAmount }} ₽</td>
+          <td>{{ item.price | number:'1.2-2' }} ₽</td>
+          <td>{{ item.totalAmount | number:'1.2-2' }} ₽</td>
         </tr>
       </tbody>
     </table>
-    <p>Total Price: {{ cart.totalPrice }} ₽</p>
+    <p>Итоговая стоимость: {{ cart.totalPrice| number:'1.2-2' }} ₽</p>
+
+    <div class="order-detalis">
+      <h2>Оформить заказ</h2>
+      <form #orderForm="ngForm" (ngSubmit)="placeOrder()">
+        <div>
+          <label for="inn">Название компании:</label>
+          <input type="text" id="companyName" name="companyName" [(ngModel)]="orderDetails.companyName" required>
+        </div>
+        <div>
+          <label for="inn">ИНН:</label>
+          <input type="text" id="inn" name="inn" [(ngModel)]="orderDetails.inn" required>
+        </div>
+        <div>
+          <label for="inn">КПП:</label>
+          <input type="text" id="kpp" name="kpp" [(ngModel)]="orderDetails.kpp" required>
+        </div>
+        <div>
+          <label for="inn">Почтовый индекс:</label>
+          <input type="text" id="postCode" name="postCode" [(ngModel)]="orderDetails.postCode" required>
+        </div>
+        <div>
+          <label for="inn">Адрес:</label>
+          <input type="text" id="address" name="address" [(ngModel)]="orderDetails.address" required>
+        </div>
+        <button type="submit" [disabled]="!orderForm.valid">Place Order</button>
+      </form>
+    </div>
   </div>
-</div>
+  </div>
 
 <div *ngIf="isLoading">
   <p>Loading...</p>

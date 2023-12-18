@@ -4,22 +4,41 @@
   <div class="info-price-container">
   <div class="price-quantity" *ngFor="let price of data.prices">
     <p class="price">{{ price.quantity }} </p>
-    <p>{{ price.priceValue  | currency:"RUB":"symbol":"1.3-3"  }}</p>
+    <p>{{ price.priceValue  | number:'1.2-2' }} ₽</p>
   </div></div>
 
   <div class="price-container">
     <div class="pricing">
       <p>Цена (шт.) </p>
-      <h3>{{newItem.price| currency:"RUB":"symbol":"1.3-3"  }}</h3>
+      <h3>{{newItem.price  | number:'1.2-2' }} ₽</h3>
     </div>
     <div class="pricing">
       <p>Итоговая стоимость</p>
-      <h3>{{newItem.totalAmount| currency:"RUB":"symbol":"1.3-3" }}</h3>
+      <h3>{{newItem.totalAmount | number:'1.2-2' }} ₽</h3>
     </div>
 
   </div>
-  <form class="form">
-    <input class="quantity-input" type="number" [(ngModel)]="newItem.quantity"  placeholder="Количество" name="quantity" (change)="onQuantityChange()">
-    <button class="add-button" (click)="addToCart()">Добавить</button>
+  <form class="form" #form="ngForm">
+    <input
+      class="quantity-input"
+      type="number"
+      [(ngModel)]="newItem.quantity"
+      placeholder="Количество"
+      name="quantity"
+      [min]="minCount"
+      required
+      (change)="onQuantityChange()"
+      #quantityField="ngModel"
+    >
+    <div *ngIf="quantityField.invalid && (quantityField.dirty || quantityField.touched)" class="error-message">
+      <div *ngIf="quantityField.errors?.required">
+        Количество обязательно
+      </div>
+      <div *ngIf="quantityField.errors?.min">
+        Количество должно быть не менее {{ minCount }}
+      </div>
+    </div>
+    <button class="add-button" [disabled]="form.invalid || quantityField.invalid" (click)="addToCart()">Добавить</button>
   </form>
+
 </div>

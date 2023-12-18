@@ -8,4 +8,5 @@ export interface ItemCartDTO {
   price: number;
   totalAmount: number;
   shoppingCartId: number;
+  clickUrl?: string;
 }
