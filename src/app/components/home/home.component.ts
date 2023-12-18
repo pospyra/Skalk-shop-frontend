@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PriceDTO, ProductDTO } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { AddToCartModalComponent } from '../add-to-cart-modal/add-to-cart-modal.component';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,9 @@ export class HomeComponent {
   products: ProductDTO[] = [];
   itemName?: string;
 
-  constructor(private productService: ProductService, private dialog: MatDialog) { }
+  constructor(private productService: ProductService,
+     private dialog: MatDialog,
+     private loaderService: LoaderService) { }
 
 
   openAddToCartModal(mnp?: string, offerId?: number, pricesDto?: PriceDTO[], clickUrl?: string, moq?: number ) {
@@ -35,13 +38,17 @@ export class HomeComponent {
     }
 
   loadProducts() {
+    this.loaderService.show();
+    console.log("loader show");
     this.productService.getProducts(this.itemName).subscribe(
 
       (data: ProductDTO[]) => {
         this.products = data;
+      //  this.loaderService.hide();
       },
       (error) => {
-        console.log(error)
+        console.log(error);
+        //this.loaderService.hide();
       }
     );
   }

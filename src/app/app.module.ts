@@ -16,6 +16,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { ManagerPanelComponent } from './components/manager-panel/manager-panel.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HeaderComponent } from './components/header/header.component';
     ShoppingCartComponent,
     MyOrdersComponent,
     ManagerPanelComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent
   ],
   imports: [
     ReactiveFormsModule ,
