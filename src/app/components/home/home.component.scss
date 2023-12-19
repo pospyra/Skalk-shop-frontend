@@ -6,68 +6,58 @@
 
 .search-container {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 20px;
-
-  button {
-    padding: 8px 12px;
-    border-radius: 5px;
-    background-color: #60829d;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  input[type="text"] {
-    padding: 8px;
-    width: 200px;
-  }
-
 }
 
-.add-to-cart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
+.search-container input[type="text"] {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.add-to-cart button{
+.search-container button {
   padding: 8px 12px;
-  border-radius: 5px;
-  background-color: #60829d;
+  background-color: #4CAF50;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
+.search-container button:hover {
+  background-color: #45a049;
+}
 
+/* Table styles */
 .business-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.content-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .business-table th, .business-table td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: center;
+  text-align: left;
 }
 
 .business-table th {
   background-color: #f2f2f2;
 }
 
-.business-table td p {
-  margin: 0;
+/* Add-to-cart button styles */
+.add-to-cart button {
+  padding: 6px 10px;
+  height: 100%;
+  background-color: #337ab7;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
-.business-table th,
-.business-table td:last-child {
-  background-color: white;
+.add-to-cart button:hover {
+  background-color: #286090;
 }
-

@@ -1,5 +1,3 @@
-/* loader.component.scss */
-
 .spinner {
   display: flex;
   justify-content: center;
@@ -13,13 +11,13 @@
   z-index: 9999;
 
   .loader {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #a1db34;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite, changeColor 5s linear infinite;
+    }
 }
 
 @keyframes spin {
@@ -28,5 +26,24 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+
+
+}
+@keyframes changeColor {
+  0%, 100% {
+    border-top: 8px solid #a1db34;
+  }
+  25% {
+    border-top: 8px solid#ff6347;
+  }
+  50% {
+    border-top: 8px solid #6495ed;
+  }
+  75% {
+    border-top: 8px solid #ffa500;
+  }
+  100% {
+     border-top: 8px solid #a1db34;
   }
 }

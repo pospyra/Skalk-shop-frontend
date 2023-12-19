@@ -11,6 +11,7 @@
     <tr>
       <th>Название компании</th>
       <th>Уровень запасов</th>
+      <th>Минимальный заказ </th>
       <th>Цена за 1 единицу</th>
       <th>Цена за 10 единиц</th>
       <th>Цена за 100 единиц</th>
@@ -20,6 +21,8 @@
     <tr >
       <td>{{ product.company?.name }}</td>
       <td *ngIf="product.offers && product.offers.length > 0">{{ product.offers[0]?.inventoryLevel }}</td>
+      <td *ngIf="product.offers && product.offers.length > 0">{{ product.offers[0]?.moq }}</td>
+
       <td>
         <ng-container *ngFor="let offer of product.offers">
           <ng-container *ngFor="let price of offer.prices">
@@ -47,13 +50,12 @@
           </ng-container>
         </ng-container>
       </td>
-      <td>
+
         <div *ngIf="product && product.mpn && product.company && product.company.id &&  product.offers && product.offers.length > 0" class="add-to-cart" >
           <button (click)="openAddToCartModal(product.mpn, product.offers[0]?.id || 0, product.offers[0]?.prices || [], product.offers[0]?.clickUrl || '', product.offers[0]?.moq || 0)">
             Добавить в корзину
           </button>
         </div>
-      </td>
 
   </tbody>
 </table>

@@ -17,6 +17,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { ManagerPanelComponent } from './components/manager-panel/manager-panel.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers:
   [

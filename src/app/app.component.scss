@@ -3,6 +3,23 @@
 @import url('https://fonts.googleapis.com/css?family=Inter');
 
 
+.success-snack-bar {
+  background-color: #5cb85c; /* зеленый */
+}
+
+.warn-snack-bar {
+  background-color: #f0ad4e; /* желтый */
+}
+
+.info-snack-bar {
+  background-color: #5bc0de; /* голубой */
+}
+
+.snack-bar-container .error-snack-bar {
+  background-color: #d9534f; /* красный */
+}
+
+
 .wrap {
   display: flex;
   flex-direction: column;

@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AddToCartModel } from 'src/app/models/shopping-cart/add-to-cart';
 import { NewItemCartDTO } from 'src/app/models/shopping-cart/new-item-cart';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { ToastrService } from 'src/app/services/toastr.service';
 
 @Component({
   selector: 'app-add-to-cart-modal',
@@ -23,6 +24,7 @@ export class AddToCartModalComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: AddToCartModel,
     private shoppingCartService: ShoppingCartService,
+    private toastrService: ToastrService,
     private dialogRef: MatDialogRef<AddToCartModalComponent>) {
     this.newItem.offerId = data.offerId;
     this.newItem.mpn = data.mnp;
@@ -58,7 +60,7 @@ export class AddToCartModalComponent implements OnInit {
   addToCart() {
     this.shoppingCartService.addItemToCart(this.newItem)
       .subscribe(res => {
-        console.log('Товар добавлен в корзину')
+        this.toastrService.showSuccessMessage("Продукт добавлен в корзину");
         this.dialogRef.close();
       }
       );

@@ -4,6 +4,7 @@ import { PriceDTO, ProductDTO } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { AddToCartModalComponent } from '../add-to-cart-modal/add-to-cart-modal.component';
 import { LoaderService } from 'src/app/services/loader.service';
+import { ToastrService } from 'src/app/services/toastr.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ export class HomeComponent {
 
   constructor(private productService: ProductService,
      private dialog: MatDialog,
-     private loaderService: LoaderService) { }
+     private loaderService: LoaderService,
+     private toasrtService: ToastrService) { }
 
 
   openAddToCartModal(mnp?: string, offerId?: number, pricesDto?: PriceDTO[], clickUrl?: string, moq?: number ) {
@@ -39,16 +41,15 @@ export class HomeComponent {
 
   loadProducts() {
     this.loaderService.show();
-    console.log("loader show");
+    this.toasrtService.showErrorMessage("Получаем данные");
     this.productService.getProducts(this.itemName).subscribe(
-
       (data: ProductDTO[]) => {
+        this.loaderService.show();
         this.products = data;
-      //  this.loaderService.hide();
+       this.loaderService.hide();
       },
-      (error) => {
-        console.log(error);
-        //this.loaderService.hide();
+      () => {
+        this.toasrtService.showErrorMessage("Ошибка при загрузке продукта");
       }
     );
   }

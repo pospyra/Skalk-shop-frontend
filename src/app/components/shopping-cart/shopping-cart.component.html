@@ -1,7 +1,7 @@
 <div class="shopping-cart" *ngIf="!isLoading">
   <h2>Shopping Cart</h2>
   <div *ngIf="cart.itemShoppingCarts.length === 0">
-    <p>Your cart is empty.</p>
+    <p>Ваша корзина пуста</p>
   </div>
   <div *ngIf="cart.itemShoppingCarts.length > 0">
     <table>
@@ -47,16 +47,11 @@
           <label for="inn">Адрес:</label>
           <input type="text" id="address" name="address" [(ngModel)]="orderDetails.address" required>
         </div>
-        <button type="submit" [disabled]="!orderForm.valid">Place Order</button>
+        <div class="submit-order">
+          <button type="submit" [disabled]="!orderForm.valid">Оформить заказ</button>
+
+        </div>
       </form>
     </div>
   </div>
-  </div>
-
-<div *ngIf="isLoading">
-  <p>Loading...</p>
-</div>
-
-<div *ngIf="cart.itemShoppingCarts.length === 0 && !isLoading">
-  <p>Failed to load cart. Please try again later.</p>
 </div>

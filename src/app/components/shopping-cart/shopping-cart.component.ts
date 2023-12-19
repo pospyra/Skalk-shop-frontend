@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { CreateOrderDTO } from 'src/app/models/order/new-order';
 import { ItemCartDTO } from 'src/app/models/shopping-cart/itemCart';
 import { ShoppingCartDTO } from 'src/app/models/shopping-cart/shopping-cart';
 import { OrderService } from 'src/app/services/order.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { ToastrService } from 'src/app/services/toastr.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -27,7 +29,8 @@ export class ShoppingCartComponent {
     address: undefined
   };
 
-  constructor(private cartService: ShoppingCartService, private orderService: OrderService) { }
+  constructor(private cartService: ShoppingCartService, private orderService: OrderService,
+    private toastrService: ToastrService, private router: Router) { }
 
   ngOnInit() {
     this.loadProducts();
@@ -48,17 +51,14 @@ export class ShoppingCartComponent {
   }
 
   placeOrder() {
-
-    // Pass orderData to the service method for order placement
     this.orderService.placeOrder(this.orderDetails).subscribe(
       (response: any) => {
-        // Handle successful order placement
-        console.log('Order placed successfully:', response);
-        // You can reset the form or perform other actions upon successful order placement
+        this.toastrService.showSuccessMessage("Заказ успешно оформлен!");
+        this.router.navigateByUrl("/my-orders");
       },
       (error: any) => {
-        // Handle error in placing the order
-        console.error('Error placing order:', error);
+        this.toastrService.showErrorMessage("Ошибка при оформлении заказа");
+
       }
     );
   }

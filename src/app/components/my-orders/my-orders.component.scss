@@ -54,6 +54,8 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  overflow-x: auto; /* Add horizontal scroll for small screens */
+  display: block; /* Enable vertical scroll if needed */
 }
 
 .items th,
@@ -61,6 +63,8 @@
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+  white-space: nowrap; /* Prevent text wrapping */
+  min-width: 120px; /* Set a minimum width for columns */
 }
 
 .items th {
