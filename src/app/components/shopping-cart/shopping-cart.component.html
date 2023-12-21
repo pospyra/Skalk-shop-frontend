@@ -16,7 +16,12 @@
       <tbody>
         <tr *ngFor="let item of cart.itemShoppingCarts">
           <td>{{ item.product?.manufacturerName }} - {{ item.product?.mpn }}</td>
-          <td>{{ item.quantity }}</td>
+          <td>{{ item.quantity }}
+              <button  *ngIf="item.product && item.product.mpn && item.product.company && item.product.company.id &&  item.product.offers && item.product.offers.length > 0"
+                 (click)="openToCartModal(item.id, item.quantity, item.product.mpn, item.product.offers[0]?.prices || [], item.product.offers[0]?.moq || 0)" class="update-item">
+                +
+              </button>
+          </td>
           <td>{{ item.price | number:'1.2-2' }} ₽</td>
           <td>{{ item.totalAmount | number:'1.2-2' }} ₽</td>
         </tr>
@@ -26,7 +31,7 @@
 
     <div class="order-detalis">
       <h2>Оформить заказ</h2>
-      <form #orderForm="ngForm" (ngSubmit)="placeOrder()">
+      <form #orderForm="ngForm" >
         <div>
           <label for="inn">Название компании:</label>
           <input type="text" id="companyName" name="companyName" [(ngModel)]="orderDetails.companyName" required>
@@ -48,8 +53,7 @@
           <input type="text" id="address" name="address" [(ngModel)]="orderDetails.address" required>
         </div>
         <div class="submit-order">
-          <button type="submit" [disabled]="!orderForm.valid">Оформить заказ</button>
-
+          <button type="submit" [disabled]="!orderForm.valid" (click)="placeOrder()">Оформить заказ</button>
         </div>
       </form>
     </div>

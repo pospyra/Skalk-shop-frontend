@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title">{{ data.mnp }}</h2>
+  <h2 class="title">{{ data.mpn }}</h2>
 
   <div class="info-price-container">
   <div class="price-quantity" *ngFor="let price of data.prices">
@@ -10,11 +10,11 @@
   <div class="price-container">
     <div class="pricing">
       <p>Цена (шт.) </p>
-      <h3>{{newItem.price  | number:'1.2-2' }} ₽</h3>
+      <h3>{{priceValue  | number:'1.2-2' }} ₽</h3>
     </div>
     <div class="pricing">
       <p>Итоговая стоимость</p>
-      <h3>{{newItem.totalAmount | number:'1.2-2' }} ₽</h3>
+      <h3>{{totalAmount | number:'1.2-2' }} ₽</h3>
     </div>
 
   </div>
@@ -22,7 +22,7 @@
     <input
       class="quantity-input"
       type="number"
-      [(ngModel)]="newItem.quantity"
+      [(ngModel)]="quantity"
       placeholder="Количество"
       name="quantity"
       [min]="minCount"
@@ -38,7 +38,9 @@
         Количество должно быть не менее {{ minCount }}
       </div>
     </div>
-    <button class="add-button" [disabled]="form.invalid || quantityField.invalid" (click)="addToCart()">Добавить</button>
+    <button *ngIf="isNewItem" class="add-button" [disabled]="form.invalid || quantityField.invalid" (click)="addToCart()">Добавить</button>
+    <button  *ngIf="!isNewItem" class="add-button" [disabled]="form.invalid || quantityField.invalid" (click)="updateItemInCart() ">Сохранить</button>
+
   </form>
 
 </div>

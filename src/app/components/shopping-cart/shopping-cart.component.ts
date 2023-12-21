@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { CreateOrderDTO } from 'src/app/models/order/new-order';
-import { ItemCartDTO } from 'src/app/models/shopping-cart/itemCart';
+import { PriceDTO } from 'src/app/models/product';
 import { ShoppingCartDTO } from 'src/app/models/shopping-cart/shopping-cart';
 import { OrderService } from 'src/app/services/order.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { ToastrService } from 'src/app/services/toastr.service';
+import { AddToCartModalComponent } from '../add-to-cart-modal/add-to-cart-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -30,7 +31,7 @@ export class ShoppingCartComponent {
   };
 
   constructor(private cartService: ShoppingCartService, private orderService: OrderService,
-    private toastrService: ToastrService, private router: Router) { }
+    private toastrService: ToastrService, private router: Router,   private dialog: MatDialog,) { }
 
   ngOnInit() {
     this.loadProducts();
@@ -62,4 +63,24 @@ export class ShoppingCartComponent {
       }
     );
   }
+
+
+ openToCartModal(id: number, quantity: number, mnp?: string, pricesDto?: PriceDTO[], moq?: number,  ) {
+   const dialogRef = this.dialog.open(AddToCartModalComponent, {
+     width: '600px',
+     height: '600px',
+     data: {
+       id: id,
+       prices: pricesDto,
+       mpn: mnp,
+       moq: moq,
+       quantity: quantity,
+       isNewItem: false
+     }
+   });
+
+   dialogRef.afterClosed().subscribe(result => {
+     console.log('The dialog was closed', result);
+   });
+   }
 }

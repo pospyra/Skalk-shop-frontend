@@ -1,9 +1,16 @@
-
 <div class="page-wrap">
   <div class="search-container">
-  <input type="text" placeholder="Enter item name" [(ngModel)]="itemName">
-  <button (click)="loadProducts()">Search</button>
-</div>
+    <div class="serch-field">
+    <input type="text" placeholder="Enter item name" [(ngModel)]="itemName" name="itemName" required pattern="^(?!\s*$).+" #searchField="ngModel">
+    <div *ngIf="searchField.invalid && (searchField.dirty || searchField.touched)" class="error-message">
+      <div *ngIf="searchField.errors?.pattern || searchField.errors?.required ">
+        Значение обязательно
+      </div>
+    </div>
+  </div>
+    <button (click)="loadProducts()" [disabled]="searchField.invalid">Поиск</button>
+  </div>
+
 
 <div class="content-container">
 <table class="business-table" *ngIf="products.length !==0">

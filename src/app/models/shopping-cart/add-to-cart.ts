@@ -1,9 +1,12 @@
 import { PriceDTO } from "../product";
 
 export interface AddToCartModel {
+  id: number;
   prices: PriceDTO[];
-  mnp: string;
+  mpn: string;
   offerId: number;
   clickUrl: string;
   moq: number;
+  isNewItem: boolean;
+  quantity: number;
 }

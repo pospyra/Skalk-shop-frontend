@@ -16,7 +16,6 @@
   color: #999;
 }
 
-/* Table styles */
 .shopping-cart table {
   width: 100%;
   border-collapse: collapse;
@@ -24,16 +23,30 @@
   overflow-x: auto; /* Enable horizontal scroll for small screens */
 }
 
-
 .shopping-cart th,
 .shopping-cart td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  border: 1px solid #c7c7c7;
+  padding: 12px; /* Общий отступ для всех ячеек */
   text-align: left;
+  min-width: 100px; /* Минимальная ширина ячейки */
 }
 
+button {
+  padding: 8px 16px;
+  background-color: #dfdfdf;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shopping-cart .update-item :hover {
+  background-color: #bebebe;
+}
 .shopping-cart th {
-  background-color: #f5f5f5;
+  background-color: #d1d1d1;
+  font-weight: bold;
 }
 
 /* Total price */
@@ -70,6 +83,8 @@
   cursor: pointer;
   margin-top: 5px;
 }
+
+
 
 .shopping-cart .order-detalis form button:disabled {
   background-color: #ddd;

@@ -6,6 +6,7 @@
 
 .search-container {
   display: flex;
+
   gap: 30px;
   margin-bottom: 20px;
 }
@@ -18,6 +19,7 @@
 }
 
 .search-container button {
+  height: 30px;
   padding: 8px 12px;
   background-color: #4CAF50;
   color: white;
@@ -29,10 +31,15 @@
 .search-container button:hover {
   background-color: #45a049;
 }
+.search-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
 /* Table styles */
 .business-table {
   width: 100%;
+  padding: 10px;
   border-collapse: collapse;
 }
 
@@ -46,7 +53,6 @@
   background-color: #f2f2f2;
 }
 
-/* Add-to-cart button styles */
 .add-to-cart button {
   padding: 6px 10px;
   height: 100%;
@@ -58,6 +64,13 @@
   margin-left: 10px;
 }
 
-.add-to-cart button:hover {
-  background-color: #286090;
+.add-to-cart button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }

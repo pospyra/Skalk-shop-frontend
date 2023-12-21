@@ -27,10 +27,11 @@ export class HomeComponent {
       height: '600px',
       data: {
         prices: pricesDto,
-        mnp: mnp,
+        mpn: mnp,
         offerId: offerId,
         clickUrl: clickUrl,
-        moq: moq
+        moq: moq,
+        isNewItem: true
       }
     });
 
@@ -49,6 +50,7 @@ export class HomeComponent {
        this.loaderService.hide();
       },
       () => {
+        this.loaderService.hide();
         this.toasrtService.showErrorMessage("Ошибка при загрузке продукта");
       }
     );
